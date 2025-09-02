@@ -1,28 +1,22 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Users, FileText } from "lucide-react";
-
-const categories = [
-  {
-    icon: <Users className="w-10 h-10 text-yellow-600" />, 
-    title: "Group Classes",
-    desc: "Join interactive group sessions via Zoom for students looking to reach levels A1-C2."
-  },
-  {
-    icon: <BookOpen className="w-10 h-10 text-orange-600" />, 
-    title: "One-on-One Tutoring",
-    desc: "Personalized sessions to target your specific learning goals."
-  },
-  {
-    icon: <FileText className="w-10 h-10 text-red-600" />, 
-    title: "Special Courses",
-    desc: "Focused courses including grammar intensives and conversation practice."
-  }
-];
+import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function LandingPage() {
+  const categories = [
+    {
+      title: 'Group Classes',
+      desc: 'Join interactive group sessions via Zoom for students looking to reach levels A1-C2.'
+    },
+    {
+      title: 'One-on-One Tutoring',
+      desc: 'Personalized sessions to target your specific learning goals.'
+    },
+    {
+      title: 'Special Courses',
+      desc: 'Focused courses including grammar intensives and conversation practice.'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-100 via-orange-200 to-yellow-200 text-gray-900">
       {/* Hero Section */}
@@ -43,54 +37,41 @@ export default function LandingPage() {
         >
           Personalized German courses and tutoring for beginners to advanced learners.
         </motion.p>
-        <Button
-          size="lg"
-          className="rounded-2xl px-8 py-4 text-lg shadow-lg bg-white text-orange-700 hover:bg-orange-100"
-          onClick={() => window.location.href='#email-signup'}
-        >
+        <a href="#email-signup" className="rounded-2xl px-8 py-4 text-lg shadow-lg bg-white text-orange-700 hover:bg-orange-100">
           Get Started
-        </Button>
+        </a>
       </section>
 
       {/* Course Categories Section */}
       <section className="py-16 px-6 grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {categories.map((category, idx) => (
-          <Card key={idx} className="rounded-2xl shadow-md hover:shadow-xl transition bg-gradient-to-br from-orange-100 to-yellow-200">
-            <CardContent className="flex flex-col items-center text-center p-6">
-              {category.icon}
-              <h3 className="text-xl font-semibold mt-4 mb-2 text-gray-800">{category.title}</h3>
-              <p className="text-gray-700">{category.desc}</p>
-            </CardContent>
-          </Card>
+        {categories.map((cat, idx) => (
+          <div key={idx} className="rounded-2xl shadow-md hover:shadow-xl transition bg-gradient-to-br from-orange-100 to-yellow-200 p-6 text-center">
+            <h3 className="text-xl font-semibold mt-4 mb-2 text-gray-800">{cat.title}</h3>
+            <p className="text-gray-700">{cat.desc}</p>
+          </div>
         ))}
       </section>
 
       {/* About Your Teacher Section */}
       <section className="py-16 px-6 max-w-3xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6 text-gray-900">About Your Teacher</h2>
-        <div className="flex flex-col items-center">
-          <img
-            src="/path-to-ian-goff-photo.jpg"
-            alt="Ian Goff"
-            className="w-40 h-40 rounded-full object-cover mb-4 shadow-lg"
-          />
-          <p className="text-lg text-gray-800">
-            Ian Goff has over 7 years of experience teaching German to students of all ages. He also has experience as an examiner, bringing expert insights into language assessment and exam preparation. Ian combines personalized 1:1 tutoring and group classes to help students achieve fluency and confidence at every level.
-          </p>
-        </div>
+        <img
+          src="/path-to-ian-goff-photo.jpg"
+          alt="Ian Goff"
+          className="w-40 h-40 rounded-full object-cover mb-4 mx-auto shadow-lg"
+        />
+        <p className="text-lg text-gray-800">
+          Ian Goff has over 7 years of experience teaching German to students of all ages. He also has experience as an examiner, bringing expert insights into language assessment and exam preparation. Ian combines personalized 1:1 tutoring and group classes to help students achieve fluency and confidence at every level.
+        </p>
       </section>
 
       {/* Email List Section */}
-      <section id="email-signup" className="py-16 px-6 bg-gradient-to-r from-orange-100 to-yellow-200 text-gray-900">
-        <h2 className="text-3xl font-bold mb-6 text-center text-gray-900">Stay Updated</h2>
-        <p className="text-center mb-6 max-w-xl mx-auto text-gray-800">
+      <section id="email-signup" className="py-16 px-6 bg-gradient-to-r from-orange-100 to-yellow-200 text-gray-900 text-center">
+        <h2 className="text-3xl font-bold mb-6">Stay Updated</h2>
+        <p className="mb-6 max-w-xl mx-auto text-gray-800">
           Join our email list to receive updates on new course offerings, special deals, and learning tips.
         </p>
-        <form
-          action="YOUR_FORM_ACTION_URL_HERE" 
-          method="POST"
-          className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-xl mx-auto"
-        >
+        <form action="YOUR_FORM_ACTION_URL_HERE" method="POST" className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-xl mx-auto">
           <input
             type="email"
             name="email"
@@ -98,9 +79,9 @@ export default function LandingPage() {
             required
             className="px-4 py-3 rounded-xl border border-gray-400 w-full md:flex-1 bg-white text-gray-900"
           />
-          <Button type="submit" className="bg-yellow-600 text-white hover:bg-yellow-700 rounded-xl px-6 py-3 shadow-md">
+          <button type="submit" className="bg-yellow-600 text-white hover:bg-yellow-700 rounded-xl px-6 py-3 shadow-md">
             Subscribe
-          </Button>
+          </button>
         </form>
       </section>
 
@@ -109,13 +90,9 @@ export default function LandingPage() {
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
           Start Your German Journey Today
         </h2>
-        <Button
-          size="lg"
-          className="rounded-2xl px-8 py-4 text-lg shadow-lg bg-white text-orange-700 hover:bg-orange-100"
-          onClick={() => window.location.href='#email-signup'}
-        >
+        <a href="#email-signup" className="rounded-2xl px-8 py-4 text-lg shadow-lg bg-white text-orange-700 hover:bg-orange-100">
           Book a Free Trial
-        </Button>
+        </a>
       </section>
     </div>
   );
